@@ -1634,6 +1634,18 @@ void handle_monster_move(monster* mons)
         return;
     }
 
+    if (mons->type == MONS_SINGULARITY)
+    {
+        if (--mons->countdown <= 0)
+            mons->suicide();
+        else
+        {
+            singularity_pull(mons);
+            mons->speed_increment -= 10;
+        }
+        return;
+    }
+
     mons->shield_blocks = 0;
 
     _mons_in_cloud(*mons);

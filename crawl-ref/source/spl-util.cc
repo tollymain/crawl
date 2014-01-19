@@ -1363,6 +1363,7 @@ bool spell_no_hostile_in_range(spell_type spell)
     // This can always potentially hit out-of-LOS, although this is conditional
     // on spell-power.
     case SPELL_FIRE_STORM:
+    case SPELL_SINGULARITY:
         return false;
 
     case SPELL_CHAIN_LIGHTNING:

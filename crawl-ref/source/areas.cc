@@ -135,6 +135,19 @@ static void _actor_areas(actor *a)
             _set_agrid_flag(*ri, areaprop::umbra);
         no_areas = false;
     }
+
+    // XXX: make this a proper function
+    if ((r = a->singularity_radius()) >= 0)
+    {
+        const int r1 = max(0, min(LOS_RADIUS, a->get_experience_level() - 4));
+        r = r1 * r1;
+
+        _agrid_centres.push_back(area_centre(AREA_DISJUNCTION, a->pos(), r));
+
+        for (radius_iterator ri(a->pos(), r, C_CIRCLE, LOS_NO_TRANS); ri; ++ri)
+            _set_agrid_flag(*ri, areaprop::disjunction);
+        no_areas = false;
+    }
 }
 
 /**
@@ -727,6 +740,24 @@ int monster::umbra_radius() const
     {
     case MONS_PROFANE_SERVITOR:
         return 5; // Very unholy!
+    default:
+        return -1;
+    }
+}
+
+int player::singularity_radius() const
+{
+    // The player will never be a singularity, this is a hack
+    return -1;
+}
+
+int monster::singularity_radius() const
+{
+    switch (type)
+    {
+    // TODO: Put the radius calculations here instead of just a boolean check
+    case MONS_SINGULARITY:
+        return 1;
     default:
         return -1;
     }

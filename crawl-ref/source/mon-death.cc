@@ -2097,6 +2097,12 @@ item_def* monster_die(monster& mons, killer_type killer,
             silent = true;
         }
     }
+    else if (mons.type == MONS_SINGULARITY && mons.countdown <= 0)
+    {
+        simple_monster_message(mons, " implodes!");
+        invalidate_agrid();
+        silent = true;
+    }
     else if (mons.type == MONS_FIRE_VORTEX
              || mons.type == MONS_SPATIAL_VORTEX
              || mons.type == MONS_TWISTER)
@@ -2928,7 +2934,8 @@ void monster_cleanup(monster* mons)
     // Monsters haloes should be removed when they die.
     if (mons->halo_radius()
         || mons->umbra_radius()
-        || mons->silence_radius())
+        || mons->silence_radius()
+        || mons->singularity_radius())
     {
         invalidate_agrid();
     }

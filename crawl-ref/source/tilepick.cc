@@ -1192,7 +1192,6 @@ static tileidx_t _mon_to_zombie_tile(const monster_info &mon)
     const monster_type subtype = mon.base_type;
 
     // hydras get special casing
-
     if (subtype == MONS_LERNAEAN_HYDRA && mon.type == MONS_ZOMBIE)
     {
         // Step down the number of heads to get the appropriate tile:
