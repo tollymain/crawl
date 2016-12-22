@@ -38,6 +38,11 @@ Felid
 Felids are many-lived cats possessing sentience. They are incapable of advanced
 item manipulation or the use of armour or weapons.
 %%%%
+Frog
+
+Frogs are a race of amphibious humanoids. They have poor attributes and move
+slowly, but can hop out of dangerous situations.
+%%%%
 Ghoul
 
 Ghouls are undead creatures, damned to rot eternally. They have sharp claws,

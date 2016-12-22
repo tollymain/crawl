@@ -1624,6 +1624,16 @@ Felids
   Felids gain extra lives as they increase in levels. Upon death, they will be
   resurrected in a safe place, losing an experience level in the process.
 
+Frogs
+  Frogs are an amphibious humanoid race, said to be distantly related to the
+  Elves. Spawned in great numbers beneath the southern ice, their Mother-Father
+  sends them forth to destroy and pillage the civilized lands.
+
+  Individually, Frogs are slow-moving and their attributes are poor. On the
+  other hand, they have considerable flexibility in skill choice, and their
+  grossly muscular legs (so poorly suited to normal movement) allow them to
+  leap remarkable distances - an ability not to be underestimated.
+
 Octopodes
   These land-capable relatives of common octopuses can move about as fast as
   humans and yet retain the ability to swim underwater, although their dual
