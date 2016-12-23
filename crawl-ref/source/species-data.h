@@ -358,7 +358,7 @@ static const map<species_type, species_def> species_data =
     HT_WATER, US_ALIVE, SIZE_MEDIUM,
     6, 6, 6, // 18
     { STAT_STR, STAT_INT, STAT_DEX }, 5,
-    { { MUT_SLOW, 1, 1 } },
+    { { MUT_SLOW, 1, 1 }, { MUT_HOP, 1, 1} },
     {},
     {},
     { JOB_FIGHTER, JOB_BERSERKER, JOB_SKALD, JOB_SUMMONER, JOB_ICE_ELEMENTALIST },
