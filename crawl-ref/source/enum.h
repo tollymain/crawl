@@ -1913,6 +1913,7 @@ enum duration_type
     DUR_NO_CAST,
     DUR_CHANNEL_ENERGY,
     DUR_SPWPN_PROTECTION,
+    DUR_NO_HOP,
     NUM_DURATIONS
 };
 

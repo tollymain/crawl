@@ -873,4 +873,6 @@ gender. This does not take any time.
 %%%%
 Hop ability
 
-Hops toward a chosen destination, landing somewhere nearby.
+Hops toward a chosen destination, landing somewhere nearby. After using this
+ability, you will be unable to hop again until you have spent some time not
+moving. (Other actions, such as casting spells and attacking, are fine.)

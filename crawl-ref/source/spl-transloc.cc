@@ -353,7 +353,7 @@ spret_type frog_hop(bool fail)
     crawl_state.cancel_cmd_again();
     crawl_state.cancel_cmd_repeat();
     mpr("Boing!");
-    you.increase_duration(DUR_EXHAUSTED, 21 + random2(10));
+    you.increase_duration(DUR_NO_HOP, 12 + random2(13));
 
     return SPRET_SUCCESS; // TODO
 }

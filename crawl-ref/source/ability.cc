@@ -315,7 +315,7 @@ static const ability_def Ability_List[] =
     { ABIL_DIG, "Dig", 0, 0, 0, 0, {}, abflag::INSTANT },
     { ABIL_SHAFT_SELF, "Shaft Self", 0, 0, 250, 0, {}, abflag::DELAY },
 
-    { ABIL_HOP, "Hop", 0, 0, 0, 0, {}, abflag::EXHAUSTION },
+    { ABIL_HOP, "Hop", 0, 0, 0, 0, {}, abflag::NONE },
 
     // EVOKE abilities use Evocations and come from items.
     // Teleportation and Blink can also come from mutations
@@ -1806,9 +1806,9 @@ static spret_type _do_ability(const ability_def& abil, bool fail)
         break;
 
     case ABIL_HOP:
-        if (you.duration[DUR_EXHAUSTED])
+        if (you.duration[DUR_NO_HOP])
         {
-            mpr("You're too exhausted to hop.");
+            mpr("Your legs are too worn out to hop.");
             return SPRET_ABORT;
         }
         return frog_hop(fail);
