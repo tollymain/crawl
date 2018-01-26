@@ -1815,8 +1815,6 @@ void process_command(command_type cmd)
         // else fall-through
     case CMD_WAIT:
         you.turn_is_over = true;
-        extract_manticore_spikes("You carefully extract the barbed spikes "
-                                 "from your body.");
         break;
 
     case CMD_PICKUP:
@@ -3218,13 +3216,18 @@ static void _move_player(coord_def move)
             // Sometimes decrease duration even when we move.
             if (one_chance_in(3))
                 extract_manticore_spikes("The barbed spikes snap loose.");
+            // But if that failed to end the effect, duration stays the same.
+            if (you.duration[DUR_BARBS])
+                you.duration[DUR_BARBS] += you.time_taken;
         }
 
         if (you_are_delayed() && current_delay()->is_run())
             env.travel_trail.push_back(you.pos());
 
-        // Serpent's Lash = 1 means half of the wall jump time is refunded, so the modifier is 2 * 1/2 = 1;
-        int wall_jump_modifier = (did_wall_jump && you.attribute[ATTR_SERPENTS_LASH] != 1) ? 2 : 1;
+        // Serpent's Lash = 1 means half of the wall jump time is refunded, so
+        // the modifier is 2 * 1/2 = 1;
+        int wall_jump_modifier =
+            (did_wall_jump && you.attribute[ATTR_SERPENTS_LASH] != 1) ? 2 : 1;
 
         you.time_taken *= wall_jump_modifier * player_movement_speed();
         you.time_taken = div_rand_round(you.time_taken, 10);

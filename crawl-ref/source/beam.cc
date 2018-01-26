@@ -3815,9 +3815,11 @@ void bolt::affect_player()
     }
 
     // need to trigger qaz resists after reducing damage from ac/resists.
-    //    for some reason, strength 2 is the standard. This leads to qaz's resists triggering 2 in 5 times at max piety.
+    //    for some reason, strength 2 is the standard. This leads to qaz's
+    //    resists triggering 2 in 5 times at max piety.
     //    perhaps this should scale with damage?
-    // what to do for hybrid damage?  E.g. bolt of magma, icicle, poison arrow?  Right now just ignore the physical component.
+    // what to do for hybrid damage?  E.g. bolt of magma, icicle, poison arrow?
+    // Right now just ignore the physical component.
     // what about acid?
     you.expose_to_element(flavour, 2, false);
 
@@ -3827,12 +3829,15 @@ void bolt::affect_player()
     {
         mpr("The barbed spikes become lodged in your body.");
         if (!you.duration[DUR_BARBS])
-            you.set_duration(DUR_BARBS,  random_range(3, 6));
+            you.set_duration(DUR_BARBS, random_range(4, 8));
         else
             you.increase_duration(DUR_BARBS, random_range(2, 4), 12);
 
         if (you.attribute[ATTR_BARBS_POW])
-            you.attribute[ATTR_BARBS_POW] = min(6, you.attribute[ATTR_BARBS_POW]++);
+        {
+            you.attribute[ATTR_BARBS_POW] =
+                min(6, you.attribute[ATTR_BARBS_POW]++);
+        }
         else
             you.attribute[ATTR_BARBS_POW] = 4;
     }
