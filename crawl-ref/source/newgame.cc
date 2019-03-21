@@ -995,14 +995,7 @@ static species_group species_groups[] =
             SP_BARACHI,
             SP_MUMMY,
             SP_DJINNI,
-            SP_ABOMINATION,
-        }
-    },
-    {
-        "Spillover",
-        coord_def(75, 0),
-        20,
-        {
+
             SP_SKELETON,
         }
     },
