@@ -254,7 +254,8 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
             const int splpow = _mons_spellpower(slot.spell, caster);
 
             int damage = 0;
-            fire_los_attack_spell(slot.spell, splpow, &caster, false, &damage);
+            fire_los_attack_spell(slot.spell, splpow, &caster, nullptr, false,
+                                  &damage);
             if (damage > 0 && caster.heal(damage))
                 simple_monster_message(caster, " is healed.");
         },
@@ -269,7 +270,7 @@ static const map<spell_type, mons_spell_logic> spell_to_logic = {
         },
         [](monster &caster, mon_spell_slot slot, bolt&) {
             const int splpow = _mons_spellpower(slot.spell, caster);
-            fire_los_attack_spell(slot.spell, splpow, &caster, false);
+            fire_los_attack_spell(slot.spell, splpow, &caster, nullptr, false);
         },
         nullptr,
         MSPELL_LOGIC_NONE,
@@ -6717,40 +6718,8 @@ void mons_cast(monster* mons, bolt pbolt, spell_type spell_cast,
         return;
 
     case SPELL_DISCHARGE:
-    {
-        const int power = min(200, splpow);
-        const int num_targs = 1 + random2(random_range(1, 3) + power / 20);
-        const int dam =
-            apply_random_around_square([power, mons] (coord_def where) {
-                return discharge_monsters(where, power, mons);
-            }, mons->pos(), true, num_targs);
-
-        if (dam > 0)
-            scaled_delay(100);
-        else
-        {
-            if (!you.can_see(*mons))
-                mpr("You hear crackling.");
-            else if (coinflip())
-            {
-                mprf("The air around %s crackles with electrical energy.",
-                     mons->name(DESC_THE).c_str());
-            }
-            else
-            {
-                const bool plural = coinflip();
-                mprf("%s blue arc%s ground%s harmlessly %s %s.",
-                     plural ? "Some" : "A",
-                     plural ? "s" : "",
-                     plural ? " themselves" : "s itself",
-                     plural ? "around" : random_choose_weighted(2, "beside",
-                                                                1, "behind",
-                                                                1, "before"),
-                     mons->name(DESC_THE).c_str());
-            }
-        }
+        cast_discharge(min(200, splpow), *mons);
         return;
-    }
 
     case SPELL_PORTAL_PROJECTILE:
     {
