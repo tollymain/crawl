@@ -766,6 +766,54 @@ bool fill_status_info(int status, status_info& inf)
         }
         break;
 
+    case STATUS_INFUSION:
+        if (you.permabuffs[MUT_INFUSION] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "Inf";
+        }
+        break;
+
+    case STATUS_FIRE_SHIELD:
+        if (you.permabuffs[MUT_RING_OF_FLAMES] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "RoF";
+        }
+        break;
+
+    case STATUS_WOUNDS:
+        if (you.permabuffs[MUT_EXCRUCIATING_WOUNDS] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "Excr";
+        }
+        break;
+
+    case STATUS_SPECTRAL_WEAPON:
+        if (you.permabuffs[MUT_SPECTRAL_WEAPON] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "Spec";
+        }
+        break;
+
+    case STATUS_BATTLESPHERE:
+        if (you.permabuffs[MUT_BATTLESPHERE] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "Sphr";
+        }
+        break;
+
+    case STATUS_ICE_ARMOUR:
+        if (you.permabuffs[MUT_OZOCUBUS_ARMOUR] > 0)
+        {
+            inf.light_colour = WHITE;
+            inf.light_text = "Ozo";
+        }
+        break;
+
     default:
         if (!found)
         {
@@ -871,6 +919,7 @@ static void _describe_glow(status_info& inf)
 static void _describe_regen(status_info& inf)
 {
     const bool regen = you.duration[DUR_TROGS_HAND] > 0;
+    const bool perma_regen = you.permabuffs[MUT_REGEN_SPELL] > 0;
     const bool no_heal = !player_regenerates_hp();
     // Does vampire hunger level affect regeneration rate significantly?
     const bool vampmod = !no_heal && !regen && you.species == SP_VAMPIRE
@@ -883,10 +932,17 @@ static void _describe_regen(status_info& inf)
         if (no_heal)
             inf.light_colour = DARKGREY;
     }
+    else if (perma_regen)
+    {
+        inf.light_colour = WHITE;
+        inf.light_text += " Regen";
+        if (no_heal)
+            inf.light_colour = DARKGREY;
+    }
 
     if ((you.disease && !regen) || no_heal)
        inf.short_text = "non-regenerating";
-    else if (regen)
+    else if (regen || perma_regen)
     {
         if (you.disease)
         {
