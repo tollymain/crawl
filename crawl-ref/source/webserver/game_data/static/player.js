@@ -409,6 +409,8 @@ function ($, comm, enums, map_knowledge, messages, options) {
         {
             $("#stats_hpline > .stats_caption").text(
             (player.real_hp_max != player.hp_max) ? "HP:" : "Health:");
+            $("#stats_mpline > .stats_caption").text(
+            (player.real_mp_max != player.mp_max) ? "MP:" : "Magic:");
         }
 
         if (player.species == "Lava Orc")
@@ -420,6 +422,14 @@ function ($, comm, enums, map_knowledge, messages, options) {
             $("#stats_real_hp_max").text("(" + player.real_hp_max + ")");
         else
             $("#stats_real_hp_max").text("");
+
+        if (player.species != "Djinni")
+        {
+            if (player.real_mp_max != player.mp_max)
+                $("#stats_real_mp_max").text("(" + player.real_mp_max + ")");
+            else
+                $("#stats_real_mp_max").text("");
+        }
 
         percentage_color("hp");
         percentage_color("mp");
@@ -540,7 +550,7 @@ function ($, comm, enums, map_knowledge, messages, options) {
             $.extend(player, {
                 name: "", god: "", title: "", species: "",
                 hp: 0, hp_max: 0, real_hp_max: 0, poison_survival: 0,
-                mp: 0, mp_max: 0,
+                mp: 0, mp_max: 0, real_mp_max: 0,
                 ac: 0, ev: 0, sh: 0,
                 xl: 0, progress: 0,
                 time: 0, time_delta: 0,
