@@ -1832,7 +1832,7 @@ bool move_item_to_inv(int obj, int quant_got, bool quiet)
     return keep_going;
 }
 
-static void _get_book(const item_def& it, bool quiet, bool allow_auto_hide)
+static void _get_book(const item_def& it, bool quiet, bool allow_auto_hide, bool new_game_init)
 {
     vector<spell_type> spells;
     if (!quiet)
@@ -1863,6 +1863,12 @@ static void _get_book(const item_def& it, bool quiet, bool allow_auto_hide)
         else
             mpr("Unfortunately, it added no spells to the library.");
     }
+    if (x_chance_in_y(6, 10) && !new_game_init)
+    {
+        mpr("A scroll of amnesia falls out of the book!");
+        int amnesia = items(false, OBJ_SCROLLS, SCR_AMNESIA, 1);
+        move_item_to_grid(&amnesia, you.pos());
+    }
     shopping_list.spells_added_to_library(spells, quiet);
 }
 
@@ -1875,7 +1881,7 @@ void add_held_books_to_library()
     {
         if (it.base_type == OBJ_BOOKS && it.sub_type != BOOK_MANUAL)
         {
-            _get_book(it, true, false);
+            _get_book(it, true, false, true);
             destroy_item(it);
         }
     }
@@ -2185,7 +2191,7 @@ static bool _merge_items_into_inv(item_def &it, int quant_got,
     }
     if (it.base_type == OBJ_BOOKS && it.sub_type != BOOK_MANUAL)
     {
-        _get_book(it, quiet, true);
+        _get_book(it, quiet, true, false);
         return true;
     }
     // Runes are also massless.
