@@ -143,9 +143,13 @@ static const species_skill_aptitude species_skill_aptitudes[] =
     APT(SP_SLUDGE_ELF,      SK_ARMOUR,         -2),
     APT(SP_SLUDGE_ELF,      SK_DODGING,         2),
     APT(SP_SLUDGE_ELF,      SK_STEALTH,         2),
+#if TAG_MAJOR_VERSION == 34
     APT(SP_SLUDGE_ELF,      SK_STABBING,      UNUSABLE_SKILL),
+#endif
     APT(SP_SLUDGE_ELF,      SK_SHIELDS,        -2),
+#if TAG_MAJOR_VERSION == 34
     APT(SP_SLUDGE_ELF,      SK_TRAPS,         UNUSABLE_SKILL),
+#endif
     APT(SP_SLUDGE_ELF,      SK_UNARMED_COMBAT,  1),
     APT(SP_SLUDGE_ELF,      SK_SPELLCASTING,    1),
     APT(SP_SLUDGE_ELF,      SK_CONJURATIONS,   -2),
