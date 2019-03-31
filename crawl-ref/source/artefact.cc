@@ -1870,7 +1870,7 @@ const vector<int> archaeologist_unrands()
             || entry->flags & UNRAND_FLAG_NOTAC)
             continue;
 
-        // 
+        // Op/FD/Dr can't train armor to open the box
         if ((you.species == SP_OCTOPODE || you.species == SP_FAERIE_DRAGON
              || species_is_draconian(you.species))
             && entry->base_type == OBJ_ARMOUR)
