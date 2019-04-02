@@ -1165,7 +1165,7 @@ void torment_cell(coord_def where, actor *attacker, torment_source_type taux)
     // Is the player in this cell? Sceptre of Torment doesn't affect the
     // wielder
     if (where == you.pos()
-        && (!attacker->is_player() || taux != TORMENT_SCEPTRE))
+        && !(attacker && attacker->is_player() || taux == TORMENT_SCEPTRE))
         torment_player(attacker, taux);
     // Don't return, since you could be standing on a monster.
 
@@ -1174,7 +1174,9 @@ void torment_cell(coord_def where, actor *attacker, torment_source_type taux)
     if (!mons
         || !mons->alive()
         || mons->res_torment()
-        || mons == attacker->as_monster() && taux == TORMENT_SCEPTRE)
+        || attacker
+           && mons == attacker->as_monster()
+           && taux == TORMENT_SCEPTRE)
         return;
 
     int hploss = max(0, mons->hit_points * (50 - mons->res_negative_energy() * 5) / 100 - 1);
