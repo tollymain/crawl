@@ -1165,7 +1165,7 @@ void torment_cell(coord_def where, actor *attacker, torment_source_type taux)
     // Is the player in this cell? Sceptre of Torment doesn't affect the
     // wielder
     if (where == you.pos()
-        && !(attacker && attacker->is_player() || taux == TORMENT_SCEPTRE))
+        && !(attacker && attacker->is_player() && taux == TORMENT_SCEPTRE))
         torment_player(attacker, taux);
     // Don't return, since you could be standing on a monster.
 
