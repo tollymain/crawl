@@ -761,7 +761,6 @@ PLUS:    27
 COLOUR:  ETC_GOLD
 TILE:    urand_lear
 TILE_EQ: lears_hauberk
-BRAND:	 SPARM_CLOUD_IMMUNE
 BOOL:    special
 
 NAME:    skin of Zhor
