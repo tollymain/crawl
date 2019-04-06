@@ -3105,6 +3105,14 @@ bool player_can_join_god(god_type which_god)
     if (you.get_mutation_level(MUT_NO_LOVE) && _god_rejects_loveless(which_god))
         return false;
 
+    // Good gods don't like evil permabuffs (Necromutation is tracked in different function)
+    if (is_good_god(which_god)
+        && (you.permabuffs[MUT_REGEN_SPELL] || you.permabuffs[MUT_EXCRUCIATING_WOUNDS]))
+    {
+        mpr("Practitioners of evil magic need not apply.");
+        return false;
+    }
+
     if (you.get_mutation_level(MUT_NO_ARTIFICE)
         && which_god == GOD_PAKELLAS)
     {
