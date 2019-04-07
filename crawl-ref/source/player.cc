@@ -3997,6 +3997,11 @@ int player_rotted()
 // Attempt to reserve MP (or EP) for permabuffs or other future MP reservations
 bool reserve_mp(int mp_reserved)
 {
+    // Double reserve cost for Djinni
+    if(you.species == SP_DJINNI)
+    {
+        mp_reserved = mp_reserved * DJ_MP_RATE;
+    }
     // If not enough MP (or EP if Djinni) left to reserve, return false
     // (include items for MP, do not include trans/berserk if EP)
     if((-(you.mp_max_adj_temp-mp_reserved) > 
@@ -4011,11 +4016,6 @@ bool reserve_mp(int mp_reserved)
     }
     else
     {
-        // Double reserve cost for Djinni
-        if(you.species == SP_DJINNI)
-        {
-            mp_reserved = mp_reserved * DJ_MP_RATE;
-        }
         you.mp_max_adj_temp -= mp_reserved;
         
         if(you.species != SP_DJINNI)
