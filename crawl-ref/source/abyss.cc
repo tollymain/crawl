@@ -174,7 +174,7 @@ static int _abyssal_rune_roll()
 
     const double depth = you.depth + god_favoured;
 
-    return (int) pow(100.0, depth/(1 + brdepth[BRANCH_ABYSS]));
+    return (int) pow(100.0, min(1, depth / 6));
 }
 
 static void _abyss_fixup_vault(const vault_placement *vp)
