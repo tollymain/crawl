@@ -808,6 +808,24 @@ static const map<species_type, species_def> species_data =
     { SK_LONG_BLADES, SK_MACES_FLAILS, SK_POLEARMS, SK_STAVES, SK_CROSSBOWS },
 } },
 
+{ SP_GREY_ELF, {
+    "GE",
+    "Grey Elf", "Elven", "Elf",
+    SPF_ELVEN,
+    0, -1, 1, 4,
+    MONS_ELF,
+    HT_LAND, US_ALIVE, SIZE_MEDIUM,
+    8, 9, 10, // 27
+    { STAT_INT, STAT_DEX }, 4,
+    {},
+    {},
+    {},
+    { JOB_GLADIATOR, JOB_HUNTER, JOB_ASSASSIN, JOB_WIZARD, JOB_CONJURER,
+      JOB_SUMMONER, JOB_NECROMANCER, JOB_FIRE_ELEMENTALIST, JOB_ICE_ELEMENTALIST,
+      JOB_AIR_ELEMENTALIST, JOB_EARTH_ELEMENTALIST, JOB_VENOM_MAGE },
+    { SK_SHORT_BLADES, SK_STAVES, SK_BOWS },
+} },
+
 // Ideally this wouldn't be necessary...
 { SP_UNKNOWN, { // Line 1: enum
     "??", // Line 2: abbrev
