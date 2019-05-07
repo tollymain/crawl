@@ -209,7 +209,7 @@ BOOL:    chaotic
 BRAND:   SPWPN_VORPAL
 
 NAME:    sword of Power
-OBJ:     OBJ_WEAPONS/WPN_GREAT_SWORD
+OBJ:     OBJ_WEAPONS/WPN_TRIPLE_SWORD
 PLUS:    +0 # Set on wield
 HP:      +20
 COLOUR:  RED
@@ -503,7 +503,7 @@ LIFE:     1
 BOOL:     poison, nogen, notac
 
 NAME:     trident of the Octopus King
-OBJ:      OBJ_WEAPONS/WPN_TRIDENT
+OBJ:      OBJ_WEAPONS/WPN_DEMON_TRIDENT
 PLUS:     +8 # Messed with sometimes
 COLOUR:   ETC_WATER
 TILE:     urand_octopus_king
@@ -613,7 +613,7 @@ TILE_EQ:  undeadhunter
 LIFE:     1
 
 NAME:    whip "Snakebite"
-OBJ:     OBJ_WEAPONS/WPN_WHIP
+OBJ:     OBJ_WEAPONS/WPN_DEMON_WHIP
 INSCRIP: curare,
 PLUS:    +8
 COLOUR:  DARKGREY
@@ -675,13 +675,13 @@ LIFE:    1
 
 NAME:    robe of Augmentation
 OBJ:     OBJ_ARMOUR/ARM_ROBE
-PLUS:    +4
+PLUS:    +8
 COLOUR:  LIGHTRED
 TILE:    urand_augmentation
 TILE_EQ: robe_white_blue
-STR:     4
-INT:     4
-DEX:     4
+STR:     8
+INT:     8
+DEX:     8
 
 NAME:     cloak of the Thief
 OBJ:      OBJ_ARMOUR/ARM_CLOAK
@@ -690,9 +690,8 @@ PLUS:     +2
 COLOUR:   ETC_DARK
 TILE:     urand_thief
 TILE_EQ:  black
-SLAY:     -2
-STEALTH:  1
-BOOL:     seeinv, fog
+STEALTH:  2
+BOOL:     seeinv, fog, blink
 
 # TAG_MAJOR_VERSION == 34
 NAME:    large shield "Bullseye"
@@ -706,11 +705,11 @@ BOOL:    nogen, notac
 
 NAME:    crown of Dyrovepreva
 OBJ:     OBJ_ARMOUR/ARM_HAT
-PLUS:    +3
+PLUS:    +5
 COLOUR:  ETC_JEWEL
 TILE:    urand_dyrovepreva
 TILE_EQ: dyrovepreva
-INT:     2
+INT:     5
 BOOL:    elec, seeinv
 
 NAME:     hat of the Bear Spirit
@@ -731,7 +730,7 @@ COLOUR:   LIGHTMAGENTA
 TILE:     urand_misfortune
 TILE_EQ:  robe_misfortune
 EV:       5
-BOOL:     harm, mutate, drain, slow, corrode
+BOOL:     harm, mutate, drain, slow, corrode, notac
 
 # TAG_MAJOR_VERSION == 34
 NAME:     cloak of Flash
@@ -761,27 +760,31 @@ PLUS:    27
 COLOUR:  ETC_GOLD
 TILE:    urand_lear
 TILE_EQ: lears_hauberk
+MAGIC:   3
+LIFE:    3
 BOOL:    special
 
 NAME:    skin of Zhor
 OBJ:     OBJ_ARMOUR/ARM_ANIMAL_SKIN
-PLUS:    +4
+PLUS:    +8
 COLOUR:  BROWN
 TILE:    urand_zhor
 TILE_EQ: zhor
 COLD:    3
-BOOL:    seeinv
+REGEN:   3
+BOOL:    seeinv,rmsl
 INSCRIP: Hibernate
 
 ENUM:    SALAMANDER
 NAME:    salamander hide armour
 OBJ:     OBJ_ARMOUR/ARM_LEATHER_ARMOUR
-PLUS:    +3
+PLUS:    +8
 COLOUR:  ETC_FIRE
 TILE:    urand_salamander
 TILE_EQ: leather_red
-FIRE:    2
+FIRE:    3
 BOOL:    berserk
+SLAY:    6
 
 NAME:    gauntlets of War
 OBJ:     OBJ_ARMOUR/ARM_GLOVES
@@ -789,7 +792,7 @@ PLUS:    +3
 COLOUR:  BROWN
 TILE:    urand_war
 TILE_EQ: glove_black
-SLAY:    5
+SLAY:    6
 
 NAME:    shield of Resistance
 OBJ:     OBJ_ARMOUR/ARM_SHIELD
@@ -810,6 +813,7 @@ TILE_EQ: robe_red2
 BRAND:   SPARM_ARCHMAGI
 INT:     5
 MAGIC:   -2
+BOOL:    notac
 
 ENUM:    MAXWELL
 NAME:    Maxwell's patent armour
@@ -819,7 +823,7 @@ COLOUR:  LIGHTGREEN
 TILE:    urand_maxwell
 TILE_EQ: maxwell
 MAGIC:   1
-BOOL:    nospell, notelep, elec, rCorr
+BOOL:    notelep, elec, rCorr, clarity
 
 ENUM:    DRAGONMASK
 NAME:    mask of the Dragon
@@ -839,7 +843,7 @@ COLOUR:   ETC_DARK
 TILE:     urand_night
 TILE_EQ:  robe_of_night
 MAGIC:    1
-BOOL:     seeinv
+BOOL:     seeinv,fog,blink,fly,invis
 VALUE:    600
 
 NAME:    scales of the Dragon King
@@ -850,9 +854,9 @@ TILE:    urand_dragon_king
 TILE_EQ: dragonarm_gold
 MAGIC:   1
 
-NAME:    hat of the Alchemist
+NAME:    hatte of the Alchemist
 OBJ:     OBJ_ARMOUR/ARM_HAT
-PLUS:    -2
+PLUS:    +1
 COLOUR:  LIGHTMAGENTA
 TILE:    urand_alchemist
 TILE_EQ: turban_purple
@@ -866,11 +870,11 @@ ENUM:    FENCERS
 NAME:    fencer's gloves
 INSCRIP: +Riposte
 OBJ:     OBJ_ARMOUR/ARM_GLOVES
-PLUS:    +0
+PLUS:    +5
 COLOUR:  WHITE
 TILE:    urand_fencer
 TILE_EQ: glove_white
-DEX:     3
+DEX:     10
 VALUE:   400
 
 NAME:     cloak of Starlight
@@ -892,10 +896,10 @@ TILE:     urand_ratskin_cloak
 TILE_EQ:  ratskin
 INSCRIP:  +Rats
 STR:      -1
-INT:      -1
-DEX:      2
+DEX:      3
 LIFE:     1
-BOOL:     poison
+COLD:     1 
+BOOL:     poison,rcorr
 
 NAME:     shield of the Gong
 OBJ:      OBJ_ARMOUR/ARM_SHIELD
@@ -953,7 +957,7 @@ BOOL:    curse
 
 NAME:    ring of Phasing
 OBJ:     OBJ_JEWELLERY/RING_EVASION
-PLUS:    +9
+PLUS:    +12
 COLOUR:  ETC_POISON
 TILE:    urand_phasing
 
@@ -1076,11 +1080,11 @@ NAME:     ring of the Octopus King
 OBJ:      OBJ_JEWELLERY/RING_LOUDNESS
 COLOUR:   ETC_WATER
 TILE:     urand_octoring
-AC:       1
-EV:       1
-STR:      1
-INT:      1
-DEX:      1
+AC:       2
+EV:       2
+STR:      2
+INT:      2
+DEX:      2
 BOOL:     unided, no_upgrade, notac
 
 # Meatsprint only. The type is adjusted to the biggest two-handed axe the
@@ -1154,6 +1158,7 @@ NAME:     arc blade
 INSCRIP:  discharge,
 OBJ:      OBJ_WEAPONS/WPN_RAPIER
 PLUS:     +8
+BASE_DAM: +2
 COLOUR:   ETC_ELECTRICITY
 TILE:     urand_arc_blade
 TILE_EQ:  arc_blade
@@ -1176,7 +1181,7 @@ OBJ:     OBJ_WEAPONS/WPN_LAJATANG
 COLOUR:  ETC_SILVER
 TILE:    urand_order
 TILE_EQ: order
-PLUS:    +7
+PLUS:    +9
 BOOL:    rMut
 
 ENUM:     FIRESTARTER
@@ -1319,8 +1324,8 @@ COLOUR:   ETC_VEHUMET
 TILE:     urand_thermic_engine
 TILE_EQ:  thermic_engine
 BRAND:    SPWPN_FLAMING
-FIRE:     -1
-COLD:     -1
+FIRE:     +1
+COLD:     +1
 
 NAME:     hand wraps "Fists of Thunder"
 INSCRIP:  elec
@@ -1329,7 +1334,7 @@ TYPE:     hand wraps
 COLOUR:   BLUE
 TILE:     urand_fists_of_thunder
 TILE_EQ:  glove_white
-SLAY:     2
+SLAY:     4
 BOOL:     elec
 
 ENUM:     RIFT
