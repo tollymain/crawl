@@ -952,15 +952,21 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
 
     if (slot == EQ_HELMET)
     {
-        // Horns 3 & Antennae 3 mutations disallow all headgear
-        if (you.get_mutation_level(MUT_HORNS, false) == 3)
+                // Horns 3 & Antennae 3 mutations disallow all headgear except crowns and masks
+        if (you.get_mutation_level(MUT_HORNS, false) == 3
+            && !is_unrandom_artefact(item, UNRAND_ETERNAL_TORMENT)
+            && !is_unrandom_artefact(item, UNRAND_CROWN_OF_DYROVEPREVA)
+            && !is unrandom_artefact(item, UNRAND_DRAGONMASK))
         {
             if (verbose)
                 mpr("You can't wear any headgear with your large horns!");
             return false;
         }
 
-        if (you.get_mutation_level(MUT_ANTENNAE, false) == 3)
+        if (you.get_mutation_level(MUT_ANTENNAE, false) == 3
+            && !is_unrandom_artefact(item, UNRAND_ETERNAL_TORMENT)
+            && !is_unrandom_artefact(item, UNRAND_CROWN_OF_DYROVEPREVA)
+            && !is_unrandom_artefact(item, UNRAND_DRAGONMASK))
         {
             if (verbose)
                 mpr("You can't wear any headgear with your large antennae!");
