@@ -198,8 +198,7 @@ static const char* grunt[][4] =
   {0}
 };
 
-
-    static const char* crab[][4] =
+   static const char* crab[][4] =
 {
     // MONSTERS AND RACES
     {"^orc$","shrimp"},
@@ -282,7 +281,6 @@ static const char* grunt[][4] =
     {"animal","underwater animal"},
     {"oklob","meltcrab"},
     {"worker","tryhard"},
-
     // ITEMS
     {"^axe$","cleaving claw"},
     {"^sword$","slashing claw"},
@@ -320,7 +318,6 @@ static const char* grunt[][4] =
     {"manual","crabuhow"},
     {"^gloves$","clawcovers"},
     {"boots","scuttlers"},
-  
      // GODS
     {"okawaru","crabawaru"},
     {"trog","trog but a crab"},
@@ -341,7 +338,6 @@ static const char* grunt[][4] =
     {"uskayaw","undadasea"},
     {"vehumet","acrabumet"},
     {"yredelemnul","reddeadlobster"},
-
     // UNIQUES
     {"Antaeus","icy mclobsterman"},
     {"fannar","icy crabman"},
@@ -401,8 +397,6 @@ static const char* grunt[][4] =
     {"teleport","portacrab"},
     {"^devil","evilcrab"},
     {"tzitzimitl","terrorcrab"},
-
-    // SHELL
     // this is here as a reminder that shell is a funny word
     {"^mail$","shell"},
     {"hell sentinel","shell sentinel"},
@@ -410,7 +404,6 @@ static const char* grunt[][4] =
     {"hellephant","damndatafineshellaphant"},
     {"shapeshifter","shellshaper"},
     {"serpent of hell","sherbert of shell"},
-
     // GENERAL TEXT REPLACEMENTS
     {"appreciates","clicks claws in appreciation of"},
     {"you die...","your journey is over little crab"},
@@ -418,6 +411,7 @@ static const char* grunt[][4] =
     {"ouch! that really hurt!","OW CRAB NO LIKE!!!"},
     {"hell knight","red lobsterman"},
     {"ugly","crabby"},
+    {"shout","gurgle"},
     {"electrocution","crabbyzappy"},
     {"electrocute","crabbyzap"},
     {"^ration$","algae cake"},
@@ -425,7 +419,6 @@ static const char* grunt[][4] =
     {"Orcish Mines","Gump Shrimp Company"},
     {"transporter","crabpoofer"},
     {"start resting","rest your weary claws"},
-    {"shout","gurgle"},
     {"staircase","crab tunnel"},
     {"bark","bubble"},
     {"you climb","you scuttle"},
@@ -436,9 +429,9 @@ static const char* grunt[][4] =
     {"unarmed","crab-fu"},
     {"great mace","great mace for a crab"},
     {"spectral weapon","phantom claw"},
-    {"corpse"},{"dedcrab"},
-    {"flesh"},{"crabmeat"},
-    {"cave"},{"crabhole"},
+    {"corpse","dedcrab"},
+    {"flesh","crabmeat"},
+    {"cave","crabhole"},
     {"ziggurat","hubrishut"},
     // preserve mistakes
     {"controlled","consquidmaned"},
@@ -447,13 +440,14 @@ static const char* grunt[][4] =
     {"sentinel","shelltenal"},
     {"depths","trench"},
     {"volcano","hydrothermal vent"},
-    {"tomb","Davy Jone's Locker"}
+    {"tomb","Davy Jone's Locker"},
     {"robe of misfortune","why would you even put this on, girlcrab?"},
     // this will probably have unintended consequences
     {"flight","crabwings"},
-        {"heal wounds","saveacrab"},
+    {"heal wounds","saveacrab"},
     {0}
 };
+
 
 
 static void _replace_cap_variants(string &str,
