@@ -1818,9 +1818,12 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         case MUT_HORNS:
         case MUT_ANTENNAE:
             // Horns & Antennae 3 removes all headgear. Same algorithm as with
-            // glove removal.
+            // glove removal except allow masks and crowns
+            if (cur_base_level >= 3 && !you.melded[EQ_HELMET]
+                && !player_equip_unrand(UNRAND_ETERNAL_TORMENT)
+                && !player_equip_unrand(UNRAND_CROWN_OF_DYROVEPREVA)
+                && !player_equip_unrand(UNRAND_DRAGONMASK))
 
-            if (cur_base_level >= 3 && !you.melded[EQ_HELMET])
                 remove_one_equip(EQ_HELMET, false, true);
             // Intentional fall-through
         case MUT_BEAK:
