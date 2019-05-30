@@ -16,6 +16,7 @@
 
 #include "ability.h"
 #include "act-iter.h"
+#include "art-enum.h"
 #include "butcher.h"
 #include "cio.h"
 #include "coordit.h"
@@ -1821,7 +1822,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
             // glove removal except allow masks and crowns
             if (cur_base_level >= 3 && !you.melded[EQ_HELMET]
                 && !player_equip_unrand(UNRAND_ETERNAL_TORMENT)
-                && !player_equip_unrand(UNRAND_CROWN_OF_DYROVEPREVA)
+                && !player_equip_unrand(UNRAND_DYROVEPREVA)
                 && !player_equip_unrand(UNRAND_DRAGONMASK))
 
                 remove_one_equip(EQ_HELMET, false, true);

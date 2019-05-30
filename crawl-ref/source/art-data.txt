@@ -851,7 +851,7 @@ COLOUR:   ETC_DARK
 TILE:     urand_night
 TILE_EQ:  robe_of_night
 MAGIC:    1
-BOOL:     seeinv,fog,blink,fly,invis
+BOOL:     seeinv,fog,blink,fly,inv
 VALUE:    600
 
 NAME:    scales of the Dragon King
