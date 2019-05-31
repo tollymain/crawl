@@ -862,7 +862,7 @@ TILE:    urand_dragon_king
 TILE_EQ: dragonarm_gold
 MAGIC:   1
 
-NAME:    hatte of the Alchemist
+NAME:    hat of the Alchemist
 OBJ:     OBJ_ARMOUR/ARM_HAT
 PLUS:    +1
 COLOUR:  LIGHTMAGENTA
