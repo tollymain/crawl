@@ -973,7 +973,7 @@ void player_reacts()
 
     // check to spawn rat from ratskin cloak
     if (player_equip_unrand(UNRAND_RATSKIN_CLOAK)
-             && random2(200) < 2)
+             && random2(200) < 4)
     {
         monster_type mon = coinflip() ? MONS_HELL_RAT : MONS_RIVER_RAT;
         mgen_data mg(mon, BEH_FRIENDLY, you.pos());
