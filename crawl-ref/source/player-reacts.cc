@@ -30,6 +30,7 @@
 #include "abyss.h" // abyss_maybe_spawn_xp_exit
 #include "act-iter.h"
 #include "areas.h"
+#include "art-enum.h"
 #include "beam.h"
 #include "cio.h"
 #include "cloud.h"
@@ -969,6 +970,55 @@ void player_reacts()
 
     if (you.has_mutation(MUT_DEMONIC_GUARDIAN))
         check_demonic_guardian();
+
+    // check to spawn rat from ratskin cloak
+    if (player_equip_unrand(UNRAND_RATSKIN_CLOAK)
+             && random2(200) < 2)
+    {
+        monster_type mon = coinflip() ? MONS_HELL_RAT : MONS_RIVER_RAT;
+        mgen_data mg(mon, BEH_FRIENDLY, you.pos());
+        mg.set_summoned(&you, 2, 0, you.religion);
+        create_monster(mg);
+        mprf(MSGCH_WARN, "Your ratskin cloak shivers and a rat drops out!");
+        // random messages for hell rat
+        if (mon = MONS_HELL_RAT) 
+        {
+            // random chance to show maessage based on the # of cases / this number
+            switch (random2(30))
+            {
+            case 0: mpr("The hell rat solemnly chants \"I, Ratzekiel, stand ready to serve!\"");break;
+            case 1: mpr("The hell rat proudly shouts \"Tremble before the great Rodenteus!\"");break;
+            case 2: mpr("Flexing his rat pecs the hell rat cries \"Prepare for battle!\"");break;
+            case 3: mpr("The hell rat says \"Yes, it's me, Ratelzebub.  Want to fight about it?\"");break;
+            case 4: mpr("The hell rat burps a small puff of fire. \"Pardon me\"");break;
+            case 5: mpr("The hell rat shivers in the dungeon, missing his lava pit.");break;
+            case 6: mpr("The hell rat cries \"Ratzuzu has arrived, master!\"");break;
+            case 7: mpr("The hell rat shouts \"It is I, Ratspater the Unvanquished!\"");break;
+            case 8: mpr("The hell rat says nothing but furrows his brow meaningfully at you.");break;
+            // remainder are no extra statement
+            default: break;
+            }
+        }
+        else 
+        // random messages for river rat
+        {
+            // random chance to show maessage based on the # of cases / this number
+            switch (random2(30))
+            {
+            case 0: mpr("The river rat squeeks \"Pardon me guv, could I get back in that there cloak?\"");break;
+            case 1: mpr("The river rat bares its tiny fangs!");break;
+            case 2: mpr("Unfurling a velvet cloak, the river rat shouts \"Have at you, miscreants!\"");break;
+            case 3: mpr("The river rat tosses aside a rat-chicken leg and stands ready to fight.");break;
+            case 4: mpr("The rat says \"I'm just a river rat, but I will do my bestest!\"");break;
+            case 5: mpr("The river rat jumps onto your shoulder hissing wildly!");break;
+            case 6: mpr("The river rat grudgingly turns from its magazine to help out.");break;
+            case 7: mpr("The river rat says \"I demand to be paid in pandemonium pizza\"");break;
+            case 8: mpr("The river rat dusts itself off and pretends it meant to do that.");break;
+            // remainder are no extra statement
+            default: break;
+            }
+        }
+    }
 
     if (you.unrand_reacts.any())
         unrand_reacts();
