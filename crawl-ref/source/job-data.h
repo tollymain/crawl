@@ -347,6 +347,17 @@ static const map<job_type, job_def> job_data =
       { SK_SPELLCASTING, 2 }, { SK_EVOCATIONS, 2 }, },
 } },
 
+{ JOB_REAVER, {
+    "Re", "Reaver",
+    1, 6, 5,
+    { SP_HIGH_ELF, SP_BASE_DRACONIAN, SP_TENGU, SP_GARGOYLE, SP_OGRE,},
+    { "leather armour", "cloak", "book of Reaving"
+        },
+    WCHOICE_PLAIN,
+    { { SK_DODGING, 2 }, {SK_FIGHTING, 2 }, { SK_WEAPON, 2 }, { SK_SPELLCASTING, 2 },
+        {SK_CONJURATIONS, 2 }, {SK_CHARMS, 2 }, },
+    } },
+    
 #if TAG_MAJOR_VERSION == 34
 { JOB_STALKER, {
     "St", "Stalker",

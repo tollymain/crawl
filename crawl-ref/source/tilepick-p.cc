@@ -1033,6 +1033,14 @@ void tilep_job_default(int job, dolls_data *doll)
             parts[TILEP_PART_HAND1] = TILEP_HAND1_QUARTERSTAFF_JESTER;
             parts[TILEP_PART_BODY]  = TILEP_BODY_ROBE_JESTER;
             break;
+        
+        case JOB_REAVER:
+            parts[TILEP_PART_BODY]  = TILEP_BODY_ROBE_BLUE;
+            parts[TILEP_PART_HELM]  = TILEP_HELM_WIZARD_GRAY;
+            parts[TILEP_PART_HAND1] = TILEP_HAND1_SARUMAN;
+            parts[TILEP_PART_CLOAK] = TILEP_CLOAK_BLACK;
+            parts[TILEP_PART_BOOTS] = TILEP_BOOTS_SHORT_BROWN2;
+
     }
 }
 
