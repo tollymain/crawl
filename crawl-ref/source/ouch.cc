@@ -565,14 +565,6 @@ static void _maybe_spawn_monsters(int dam, const bool is_torment,
         mon = MONS_BUTTERFLY;
         how_many = 2 + random2(5);
     }
-    // if has ratskin cloak on, chance for rats to drop out of cloak
-    // this won't happen if you were already going to get a slime or a butterfly
-    else if (player_equip_unrand(UNRAND_RATSKIN_CLOAK)
-             && random2(dam) > you.hp_max / 10)
-    {
-        how_many = 1;
-        mon = coinflip() ? MONS_HELL_RAT : MONS_RIVER_RAT;
-    }
 
     if (how_many > 0)
     {
@@ -593,11 +585,7 @@ static void _maybe_spawn_monsters(int dam, const bool is_torment,
                 mprf(MSGCH_GOD, "A shower of butterflies erupts from you!");
                 take_note(Note(NOTE_XOM_EFFECT, you.piety, -1, "butterfly on damage"), true);
             }
-            else if (mon == MONS_HELL_RAT  || mon == MONS_RIVER_RAT)
-            {
-                mprf("Your ratskin cloak shudders from the %s and a rat falls out! SQUEEEEK!",
-                     death_type == KILLED_BY_MONSTER ? "blow" : "blast");
-            }            else
+            else
             {
                 mprf("You shudder from the %s and a %s!",
                      death_type == KILLED_BY_MONSTER ? "blow" : "blast",

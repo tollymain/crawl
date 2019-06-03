@@ -30,7 +30,6 @@
 #include "abyss.h" // abyss_maybe_spawn_xp_exit
 #include "act-iter.h"
 #include "areas.h"
-#include "art-enum.h"
 #include "beam.h"
 #include "cio.h"
 #include "cloud.h"
@@ -971,6 +970,7 @@ void player_reacts()
     if (you.has_mutation(MUT_DEMONIC_GUARDIAN))
         check_demonic_guardian();
 
+<<<<<<< HEAD
     // check to spawn rat from ratskin cloak
     if (player_equip_unrand(UNRAND_RATSKIN_CLOAK)
              && random2(200) < 4)
@@ -1020,6 +1020,8 @@ void player_reacts()
         }
     }
 
+=======
+>>>>>>> parent of 540fdc41cf... Have ratskin cloak drop rats on damage or while walking around
     if (you.unrand_reacts.any())
         unrand_reacts();
 
