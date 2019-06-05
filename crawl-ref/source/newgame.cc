@@ -961,6 +961,7 @@ static species_group species_groups[] =
             SP_GHOUL,
             SP_HERMIT_CRAB,
             SP_FAERIE_DRAGON,
+            SP_GNOLL,
         }
     },
     {
@@ -978,9 +979,7 @@ static species_group species_groups[] =
             SP_DEEP_ELF,
             SP_GREY_ELF,
             SP_OGRE,
-            SP_ABOMINATION,
             SP_DEEP_DWARF,
-            SP_GNOLL,
             SP_LAVA_ORC,
         }
     },
@@ -995,11 +994,11 @@ static species_group species_groups[] =
             SP_FORMICID,
             SP_NAGA,
             SP_OCTOPODE,
+            SP_ABOMINATION,
             SP_FELID,
             SP_BARACHI,
             SP_MUMMY,
             SP_DJINNI,
-
             SP_SKELETON,
         }
     },
