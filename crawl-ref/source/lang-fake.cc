@@ -418,7 +418,7 @@ static const char* grunt[][4] =
     {"^ration$","algae cake"},
     {"javelin","harpoon"},
     {"orcish mines","gump shrimp company"},
-    {"shoals","crab heaven"}
+    {"shoals","crab heaven"},
     {"elven","fiddler crab"},
     {"transporter","crabpoofer"},
     {"start resting","rest your weary claws"},
