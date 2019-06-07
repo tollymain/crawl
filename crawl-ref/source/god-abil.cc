@@ -5338,7 +5338,8 @@ static int _piety_for_skill_by_sacrifice(ability_type sacrifice)
         if (species_size(you.species, PSIZE_TORSO) <= SIZE_SMALL)
             piety_gain += _piety_for_skill(SK_STAVES);
         // No one-handed bows.
-        if (you.species != SP_FORMICID)
+        if (you.species != SP_FORMICID
+            || you.species != SP_ABOMINATION)
             piety_gain += _piety_for_skill(SK_BOWS);
     }
     return piety_gain;
@@ -5743,7 +5744,7 @@ static void _extra_sacrifice_code(ability_type sac)
     {
         equipment_type ring_slot;
 
-        if (you.species == SP_OCTOPODE)
+        if (you.species == SP_OCTOPODE || you.species == SP_ABOMINATION)
             ring_slot = EQ_RING_EIGHT;
         else
             ring_slot = EQ_LEFT_RING;
@@ -5776,7 +5777,7 @@ static void _extra_sacrifice_code(ability_type sac)
         // And one ring
         if (ring != nullptr)
         {
-            if (you.species == SP_OCTOPODE)
+            if (you.species == SP_OCTOPODE || you.species == SP_ABOMINATION)
             {
                 for (int eq = EQ_RING_ONE; eq <= EQ_RING_SEVEN; eq++)
                 {
@@ -5803,7 +5804,7 @@ static void _extra_sacrifice_code(ability_type sac)
             {
                 mprf("You put %s back on %s %s!",
                      ring->name(DESC_YOUR).c_str(),
-                     (you.species == SP_OCTOPODE ? "another" : "your other"),
+                     ((you.species == SP_OCTOPODE || you.species == SP_ABOMINATION) ? "another" : "your other"),
                      you.hand_name(true).c_str());
                 puton_ring(ring_inv_slot, false);
             }
@@ -6002,7 +6003,8 @@ bool ru_do_sacrifice(ability_type sac)
         if (species_size(you.species, PSIZE_TORSO) <= SIZE_SMALL)
             _ru_kill_skill(SK_STAVES);
         // No one-handed bows.
-        if (you.species != SP_FORMICID)
+        if (you.species != SP_FORMICID
+            || you.species != SP_ABOMINATION)
             _ru_kill_skill(SK_BOWS);
     }
 

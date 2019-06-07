@@ -307,6 +307,10 @@ Healer player ghost
 Jester player ghost
 
 @player ghost@
+%%%%
+Reaver player ghost
+
+@player ghost@
 ########################################
 # Shouts by monster symbol
 ########################################

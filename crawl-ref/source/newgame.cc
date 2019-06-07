@@ -182,18 +182,20 @@ static const species_type species_order[] =
     SP_DEEP_ELF,       SP_DEEP_DWARF,
     SP_HILL_ORC,       SP_SLUDGE_ELF,
     SP_PROMETHEAN,     SP_LAVA_ORC,
+    SP_GREY_ELF,
     // small species
     SP_HALFLING,       SP_KOBOLD,
     SP_SPRIGGAN,       SP_FAERIE_DRAGON,
     // large species
     SP_OGRE,           SP_TROLL,
+    SP_ABOMINATION,
     // significantly different body type from human ("monstrous")
     SP_NAGA,           SP_CENTAUR,
     SP_MERFOLK,        SP_MINOTAUR,
     SP_TENGU,          SP_BASE_DRACONIAN,
     SP_GARGOYLE,       SP_FORMICID,
     SP_BARACHI,        SP_GNOLL,
-    SP_HERMIT_CRAB,
+    SP_HERMIT_CRAB,    SP_ABOMINATION,
     // mostly human shape but made of a strange substance
     SP_VINE_STALKER,
     // celestial species
@@ -959,6 +961,7 @@ static species_group species_groups[] =
             SP_GHOUL,
             SP_HERMIT_CRAB,
             SP_FAERIE_DRAGON,
+            SP_GNOLL,
         }
     },
     {
@@ -974,9 +977,9 @@ static species_group species_groups[] =
             SP_TENGU,
             SP_HIGH_ELF,
             SP_DEEP_ELF,
+            SP_GREY_ELF,
             SP_OGRE,
             SP_DEEP_DWARF,
-            SP_GNOLL,
             SP_LAVA_ORC,
         }
     },
@@ -991,6 +994,7 @@ static species_group species_groups[] =
             SP_FORMICID,
             SP_NAGA,
             SP_OCTOPODE,
+            SP_ABOMINATION,
             SP_FELID,
             SP_BARACHI,
             SP_MUMMY,
@@ -1095,7 +1099,7 @@ static job_group jobs_order[] =
         "Warrior-mage",
         coord_def(35, 0), 21,
         { JOB_SKALD, JOB_TRANSMUTER, JOB_WARPER, JOB_ARCANE_MARKSMAN,
-          JOB_ENCHANTER }
+          JOB_ENCHANTER, JOB_REAVER }
     },
     {
         "Mage",
