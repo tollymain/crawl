@@ -243,6 +243,10 @@ book of power
 A book of powerful magic spells, crackling and shuddering with barely-contained
 energies.
 %%%%
+book of reaving
+
+A book of reaving, focused on creating assert errors.  
+%%%%
 book of spatial translocations
 
 A basic spellbook on the magical field of Translocations.
