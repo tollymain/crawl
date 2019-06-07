@@ -245,7 +245,7 @@ energies.
 %%%%
 book of reaving
 
-A book of reaving, focused on creating assert errors.  
+A book of reaving, focused on battle magic related to melee and ranged.
 %%%%
 book of spatial translocations
 
