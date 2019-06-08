@@ -6,7 +6,6 @@ enum species_type
     SP_HIGH_ELF,
     SP_DEEP_ELF,
     SP_SLUDGE_ELF,
-    SP_GREY_ELF,
     SP_HALFLING,
     SP_HILL_ORC,
     SP_KOBOLD,
@@ -51,6 +50,7 @@ enum species_type
     SP_FAERIE_DRAGON,
     SP_SKELETON,
     SP_ABOMINATION,
+    SP_GREY_ELF,
     NUM_SPECIES,
 
     SP_UNKNOWN  = 100,
