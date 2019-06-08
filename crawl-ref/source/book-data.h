@@ -363,15 +363,6 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_SUMMON_HYDRA,
 },
 
-{   // Book of Reaving
-    SPELL_INFUSION,
-    SPELL_BLINK,
-    SPELL_OZOCUBUS_ARMOUR,
-    SPELL_CONJURE_FLAME,
-    SPELL_FORCE_LANCE,
-    SPELL_BLADE_OF_DISASTER,
-    
-},
     
 {   // Book of Annihilations
     SPELL_POISON_ARROW,
@@ -396,6 +387,16 @@ static const vector<spell_type> spellbook_templates[] =
     SPELL_INFESTATION,
     SPELL_NECROMUTATION,
 },
+{   // Book of Reaving
+    SPELL_INFUSION,
+    SPELL_BLINK,
+    SPELL_OZOCUBUS_ARMOUR,
+    SPELL_CONJURE_FLAME,
+    SPELL_FORCE_LANCE,
+    SPELL_BLADE_OF_DISASTER,
+    
+},
+
 
 };
 
