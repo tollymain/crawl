@@ -4002,7 +4002,8 @@ static int _modified_reserved_mp(int base_mp)
         // Multiply base_mp by (50 - Int) / 10
         // round down to nearest whole number (benefits player)
         // don't worry if mod_mp becomes positive here, checking later
-        int mod_mp = floor(base_mp * ((50-you.intel(false)) / 10));
+        int mod_mp = floor(static_cast<double>(base_mp) * 
+                           ((50.0-static_cast<double>(you.intel(false))) / 10.0));
 
         // Reduce mod_mp by Dex
         mod_mp += you.dex(false);
