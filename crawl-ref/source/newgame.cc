@@ -69,7 +69,7 @@ enum MenuOptions
     M_VIABLE_CHAR = -7,
     M_RANDOM_CHAR = -8,
     M_DEFAULT_CHOICE = -9,
-	M_SPEC_PAGE = -10,
+    M_SPEC_PAGE = -10,
 };
 
 enum MenuChoices
@@ -381,10 +381,10 @@ static void _prompt_choice(int choice_type, newgame_def& ng, newgame_def& ng_cho
 static void _choose_species_job(newgame_def& ng, newgame_def& ng_choice,
                                 const newgame_def& defaults)
 {
-	
+    
     _resolve_species_job(ng, ng_choice);
-	
-	int currentSpeciesPage = 0;
+    
+    int currentSpeciesPage = 0;
 
     while (ng_choice.species == SP_UNKNOWN || ng_choice.job == JOB_UNKNOWN)
     {
@@ -393,7 +393,7 @@ static void _choose_species_job(newgame_def& ng, newgame_def& ng_choice,
         // random character to be rolled. They will reset relevant fields
         // in ng for this purpose.
         if (ng_choice.species == SP_UNKNOWN)
-			// TODO: Species page hackjob alert
+            // TODO: Species page hackjob alert
             _prompt_choice(C_SPECIES, ng, ng_choice, defaults, currentSpeciesPage);
         _resolve_species_job(ng, ng_choice);
         if (ng_choice.job == JOB_UNKNOWN)
@@ -760,24 +760,24 @@ static void _add_choice_menu_options(int choice_type,
     tmp->set_description_text("Opens the help screen.");
     menu->attach_item(tmp);
     tmp->set_visible(true);
-	
-	if (choice_type == C_SPECIES)
-	{
-		tmp = new TextItem();
-		tmp->set_text("> - Next Page");
-		min_coord.x = X_MARGIN + (COLUMN_WIDTH * 2);
-		min_coord.y = SPECIAL_KEYS_START_Y;
-		max_coord.x = min_coord.x + tmp->get_text().size();
-		max_coord.y = min_coord.y + 1;
-		tmp->set_bounds(min_coord, max_coord);
-		tmp->set_fg_colour(BROWN);
-		tmp->add_hotkey('>');
-		tmp->set_id(M_SPEC_PAGE);
-		tmp->set_highlight_colour(BLUE);
-		tmp->set_description_text("Shows the next species page.");
-		menu->attach_item(tmp);
-		tmp->set_visible(true);
-	}
+    
+    if (choice_type == C_SPECIES)
+    {
+        tmp = new TextItem();
+        tmp->set_text("> - Next Page");
+        min_coord.x = X_MARGIN + (COLUMN_WIDTH * 2);
+        min_coord.y = SPECIAL_KEYS_START_Y;
+        max_coord.x = min_coord.x + tmp->get_text().size();
+        max_coord.y = min_coord.y + 1;
+        tmp->set_bounds(min_coord, max_coord);
+        tmp->set_fg_colour(BROWN);
+        tmp->add_hotkey('>');
+        tmp->set_id(M_SPEC_PAGE);
+        tmp->set_highlight_colour(BLUE);
+        tmp->set_description_text("Shows the next species page.");
+        menu->attach_item(tmp);
+        tmp->set_visible(true);
+    }
 
     tmp = new TextItem();
     tmp->set_text("* - Random " + choice_name);
@@ -1025,7 +1025,7 @@ static species_group species_groups[] =
             SP_DJINNI,
         }
     },
-	{
+    {
         "Simple",
         coord_def(0, 0),
         20,
@@ -1054,18 +1054,18 @@ static species_group species_groups[] =
 static void _construct_species_menu(const newgame_def& ng,
                                     const newgame_def& defaults,
                                     MenuFreeform* menu,
-									int currentPage)
+                                    int currentPage)
 {
     ASSERT(menu != nullptr);
 
     menu_letter letter = 'a';
     // Add entries for any species groups with at least one playable species.
-	
-	for (int i = currentPage * 3; i < ((currentPage + 1) * 3); i++)
-	{
-		species_group& group = species_groups[i];
-		
-		if (ng.job == JOB_UNKNOWN
+    
+    for (int i = currentPage * 3; i < ((currentPage + 1) * 3); i++)
+    {
+        species_group& group = species_groups[i];
+        
+        if (ng.job == JOB_UNKNOWN
             ||  any_of(begin(group.species_list),
                       end(group.species_list),
                       [&ng](species_type species)
@@ -1075,7 +1075,7 @@ static void _construct_species_menu(const newgame_def& ng,
         {
             group.attach(ng, defaults, menu, letter);
         }
-	}
+    }
 
     _add_choice_menu_options(C_SPECIES, ng, defaults, menu);
 }
@@ -1220,9 +1220,9 @@ static void _prompt_choice(int choice_type, newgame_def& ng, newgame_def& ng_cho
     cprintf("%s", _welcome(ng).c_str());
 
     textcolour(YELLOW);
-	
-	// TODO: Species page hackjob alert
-	static int maxPages = 1;
+    
+    // TODO: Species page hackjob alert
+    static int maxPages = 1;
 
     if (choice_type == C_JOB)
     {
@@ -1358,12 +1358,12 @@ static void _prompt_choice(int choice_type, newgame_def& ng, newgame_def& ng_cho
                 else
                     ng_choice.species = SP_RANDOM;
                 return;
-			case M_SPEC_PAGE:
-				if (species_page < maxPages)
-					species_page++;
-				else
-					species_page = 0;
-				return _prompt_choice(choice_type, ng, ng_choice, defaults, species_page);
+            case M_SPEC_PAGE:
+                if (species_page < maxPages)
+                    species_page++;
+                else
+                    species_page = 0;
+                return _prompt_choice(choice_type, ng, ng_choice, defaults, species_page);
             default:
                 // we have a selection
                 if (choice_type == C_JOB)
