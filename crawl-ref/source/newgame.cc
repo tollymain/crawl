@@ -764,14 +764,14 @@ static void _add_choice_menu_options(int choice_type,
     if (choice_type == C_SPECIES)
     {
         tmp = new TextItem();
-        tmp->set_text("> - Next Page");
-        min_coord.x = X_MARGIN + (COLUMN_WIDTH * 2);
-        min_coord.y = SPECIAL_KEYS_START_Y;
+        tmp->set_text("$ - Next Page");
+        min_coord.x = X_MARGIN;
+        min_coord.y = SPECIAL_KEYS_START_Y + 4;
         max_coord.x = min_coord.x + tmp->get_text().size();
         max_coord.y = min_coord.y + 1;
         tmp->set_bounds(min_coord, max_coord);
         tmp->set_fg_colour(BROWN);
-        tmp->add_hotkey('>');
+        tmp->add_hotkey('$');
         tmp->set_id(M_SPEC_PAGE);
         tmp->set_highlight_colour(BLUE);
         tmp->set_description_text("Shows the next species page.");
