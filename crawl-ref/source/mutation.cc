@@ -16,6 +16,7 @@
 
 #include "ability.h"
 #include "act-iter.h"
+#include "art-enum.h"
 #include "butcher.h"
 #include "cio.h"
 #include "coordit.h"
@@ -700,6 +701,19 @@ string describe_mutations(bool center_title)
             !form_keeps_mutations());
     }
 
+    if (you.species == SP_ABOMINATION)
+    {
+        result += _annotate_form_based("You have gills and webbed feet.",
+                                       !form_likes_water());
+
+        const string num_tentacles =
+               number_in_words(you.has_usable_tentacles(false));
+        result += _annotate_form_based(
+            make_stringf("You can wear up to %s rings at the same time.",
+                         num_tentacles.c_str()),
+            !get_form()->slot_available(EQ_RING_EIGHT));
+    }
+
     if (you.species != SP_FELID)
     {
         switch (you.body_size(PSIZE_TORSO, true))
@@ -1328,7 +1342,7 @@ bool physiology_mutation_conflict(mutation_type mutat)
     }
     
     // Need tentacles to grow something on them.
-    if (you.species != SP_OCTOPODE && mutat == MUT_TENTACLE_SPIKE)
+    if ((you.species != SP_OCTOPODE || you.species != SP_ABOMINATION) && mutat == MUT_TENTACLE_SPIKE)
         return true;
 
     // No bones for thin skeletal structure, and too squishy for horns.
@@ -1731,7 +1745,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 const char *arms;
                 if (you.species == SP_FELID)
                     arms = "legs";
-                else if (you.species == SP_OCTOPODE)
+                else if (you.species == SP_OCTOPODE || you.species == SP_ABOMINATION)
                     arms = "tentacles";
                 else
                     break;
@@ -1747,7 +1761,7 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
                 const char *hands;
                 if (you.species == SP_FELID)
                     hands = "front paws";
-                else if (you.species == SP_OCTOPODE)
+                else if (you.species == SP_OCTOPODE || you.species == SP_ABOMINATION)
                     hands = "tentacles";
                 else if (you.species == SP_HERMIT_CRAB)
                     hands = "pincers";
@@ -1818,9 +1832,12 @@ bool mutate(mutation_type which_mutation, const string &reason, bool failMsg,
         case MUT_HORNS:
         case MUT_ANTENNAE:
             // Horns & Antennae 3 removes all headgear. Same algorithm as with
-            // glove removal.
+            // glove removal except allow masks and crowns
+            if (cur_base_level >= 3 && !you.melded[EQ_HELMET]
+                && !player_equip_unrand(UNRAND_ETERNAL_TORMENT)
+                && !player_equip_unrand(UNRAND_DYROVEPREVA)
+                && !player_equip_unrand(UNRAND_DRAGONMASK))
 
-            if (cur_base_level >= 3 && !you.melded[EQ_HELMET])
                 remove_one_equip(EQ_HELMET, false, true);
             // Intentional fall-through
         case MUT_BEAK:

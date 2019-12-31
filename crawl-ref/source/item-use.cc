@@ -382,21 +382,6 @@ bool can_wield(const item_def *weapon, bool say_reason,
         else
             return false;
     }
-    else if (!ignore_temporary_disability
-             && you.hunger_state < HS_FULL
-             && get_weapon_brand(*weapon) == SPWPN_VAMPIRISM
-             && you.undead_state() == US_ALIVE
-             && !you_foodless()
-             && (item_type_known(*weapon) || !only_known))
-    {
-        if (say_reason)
-        {
-            mpr("This weapon is vampiric, and you must be Full or above to equip it.");
-            id_brand = true;
-        }
-        else
-            return false;
-    }
     else if (you.species == SP_DJINNI
              && get_weapon_brand(*weapon) == SPWPN_ANTIMAGIC
              && (item_type_known(*weapon) || !only_known))
@@ -740,6 +725,13 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
         return false;
     }
 
+    if (you.species == SP_ABOMINATION && slot == EQ_GLOVES)
+    {
+        if (verbose)
+            mprf("Your mass of tentacles won't fit in that!");
+        return false;
+    }
+
     if (species_is_draconian(you.species) && slot == EQ_BODY_ARMOUR)
     {
         if (verbose)
@@ -952,15 +944,21 @@ bool can_wear_armour(const item_def &item, bool verbose, bool ignore_temporary)
 
     if (slot == EQ_HELMET)
     {
-        // Horns 3 & Antennae 3 mutations disallow all headgear
-        if (you.get_mutation_level(MUT_HORNS, false) == 3)
+        // Horns 3 & Antennae 3 mutations disallow all headgear except crowns and masks
+        if (you.get_mutation_level(MUT_HORNS, false) == 3
+            && !is_unrandom_artefact(item, UNRAND_ETERNAL_TORMENT)
+            && !is_unrandom_artefact(item, UNRAND_DYROVEPREVA)
+            && !is_unrandom_artefact(item, UNRAND_DRAGONMASK))
         {
             if (verbose)
                 mpr("You can't wear any headgear with your large horns!");
             return false;
         }
 
-        if (you.get_mutation_level(MUT_ANTENNAE, false) == 3)
+        if (you.get_mutation_level(MUT_ANTENNAE, false) == 3
+            && !is_unrandom_artefact(item, UNRAND_ETERNAL_TORMENT)
+            && !is_unrandom_artefact(item, UNRAND_DYROVEPREVA)
+            && !is_unrandom_artefact(item, UNRAND_DRAGONMASK))
         {
             if (verbose)
                 mpr("You can't wear any headgear with your large antennae!");
@@ -1227,7 +1225,8 @@ bool takeoff_armour(int item)
 static vector<equipment_type> _current_ring_types()
 {
     vector<equipment_type> ret;
-    if (you.species == SP_OCTOPODE)
+    if (you.species == SP_OCTOPODE
+        || you.species == SP_ABOMINATION)
     {
         for (int i = 0; i < 8; ++i)
         {

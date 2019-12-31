@@ -56,13 +56,13 @@ static const map<job_type, job_def> job_data =
 
 { JOB_ARCHAEOLOGIST, {
     "Ac", "Archaeologist",
-    3, 6, 3,
+    4, 4, 4,
     { SP_HUMAN, SP_TENGU, SP_DEEP_ELF, SP_DEEP_DWARF, SP_DEMONSPAWN},
-    { "whip", "robe plus:1", "hat plus:1", "dusty tome", "ancient crate" },
+    { "whip", "robe plus:1", "hat plus:1", "dusty tome", "ancient crate","scroll of identify q:4" },
     WCHOICE_NONE,
-    { { SK_STEALTH, 3}, { SK_DODGING, 3}, { SK_FIGHTING, 1} },
+    { { SK_STEALTH, 1}, { SK_DODGING, 3}, { SK_FIGHTING, 3} },
 } },
-
+    
 { JOB_ARTIFICER, {
     "Ar", "Artificer",
     4, 3, 5,
@@ -347,6 +347,17 @@ static const map<job_type, job_def> job_data =
       { SK_SPELLCASTING, 2 }, { SK_EVOCATIONS, 2 }, },
 } },
 
+{ JOB_REAVER, {
+    "Re", "Reaver",
+    1, 6, 5,
+    { SP_HIGH_ELF, SP_BASE_DRACONIAN, SP_TENGU, SP_GARGOYLE, SP_OGRE,},
+    { "leather armour", "cloak", "book of Reaving"
+        },
+    WCHOICE_PLAIN,
+    { { SK_DODGING, 2 }, {SK_FIGHTING, 2 }, { SK_WEAPON, 2 }, { SK_SPELLCASTING, 2 },
+        {SK_CONJURATIONS, 2 }, {SK_CHARMS, 2 }, },
+    } },
+    
 #if TAG_MAJOR_VERSION == 34
 { JOB_STALKER, {
     "St", "Stalker",

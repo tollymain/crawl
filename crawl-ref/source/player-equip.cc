@@ -138,7 +138,7 @@ static void _assert_valid_slot(equipment_type eq, equipment_type slot)
         return;
     ASSERT(eq == EQ_RINGS); // all other slots are unique
     equipment_type r1 = EQ_LEFT_RING, r2 = EQ_RIGHT_RING;
-    if (you.species == SP_OCTOPODE)
+    if (you.species == SP_OCTOPODE || you.species == SP_ABOMINATION)
         r1 = EQ_RING_ONE, r2 = EQ_RING_EIGHT;
     if (slot >= r1 && slot <= r2)
         return;
@@ -539,10 +539,8 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
                 case SPWPN_VAMPIRISM:
                     if (you.species == SP_VAMPIRE)
                         mpr("You feel a bloodthirsty glee!");
-                    else if (you.undead_state() == US_ALIVE && !you_foodless())
-                        mpr("You feel a dreadful hunger.");
                     else
-                        mpr("You feel an empty sense of dread.");
+                        mpr("You feel a sense of dread.");
                     break;
 
                 case SPWPN_PAIN:
@@ -607,16 +605,6 @@ static void _equip_weapon_effect(item_def& item, bool showMsgs, bool unmeld)
             // effect second
             switch (special)
             {
-            case SPWPN_VAMPIRISM:
-                if (you.species != SP_VAMPIRE
-                    && you.undead_state() == US_ALIVE
-                    && !you_foodless()
-                    && !unmeld)
-                {
-                    make_hungry(4500, false, false);
-                }
-                break;
-
             case SPWPN_DISTORTION:
                 if (!was_known)
                 {

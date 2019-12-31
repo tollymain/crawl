@@ -1,4 +1,9 @@
 %%%%
+Abomination
+
+Product of mad wizard trying to produce the ultimate species. Combines the
+strengths of many others, but weak to magic and fire, and a fractured mind.
+%%%%
 Barachi
 
 Barachim are amphibious humanoids who rebelled against the gods. They're fast
@@ -164,3 +169,8 @@ Skeleton
 
 creatures animated by arcane means, skeletons are adept at combat and offensive 
 magic, and can enter a deep murderous trance at will.
+%%%%
+Grey Elf
+
+The Grey Elves have an affinity for their natural surroundings
+that their more noble brethren lack, practically and magically.

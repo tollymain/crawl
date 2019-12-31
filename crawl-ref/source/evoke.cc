@@ -684,6 +684,9 @@ void archaeologist_read_tome(item_def& tome)
     tome.base_type = OBJ_BOOKS;
     tome.sub_type = BOOK_MANUAL;
     tome.skill_points = 700;
+     // significantly reduce requirements for Gnoll (trains 1/30 as fast)
+    if (you.species == SP_GNOLL)
+        tome.skill_points = 35;
     tome.skill = (skill_type)tome.props[ARCHAEOLOGIST_TOME_SKILL].get_int();
     item_colour(tome);
     item_set_appearance(tome);
